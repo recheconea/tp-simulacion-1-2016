@@ -3,7 +3,7 @@ REPORTE SNAKE
 Información general
 
       START_TIME         END_TIME     BLOCKS    FACILITIES    STORAGES
-               0            33966         66             7           2 
+               0            37360         66             7           2 
 
 Bloques no ejecutables
  BUSCHICOCANTPAS	VARIABLE RN2@5+6
@@ -31,16 +31,16 @@ BAR			STORAGE		30000
 TCANTIDADBAR		TABLE		S$BAR,0,1,100
 QTESTACIONSERVICIO	QTABLE		ESTACIONSERVICIO,0,60,20
 QTESTACIONAMIENTO	QTABLE		ESTACIONAMIENTO,0,30,20
-TTIEMPOBUSSISTEMA	TABLE		M1,3600,1800,19
+TTIEMPOBUSSISTEMA	TABLE		M1,3600,600,19
 TTIEMPOMUSEO		TABLE		MP7,600,300,23
 
 
 Bloques ejecutables
 
   LINE         LOC  BLOCK_TYPE                               ENTRY_COUNT  CURRENT_COUNT  RETRY
-    30           1  GENERATE        120,0,3600                       254              0      0
-    31           2  TABULATE        TCANTIDADBAR                     254              0      0
-    32           3  TERMINATE                                        254              0      0
+    30           1  GENERATE        120,0,3600                       282              0      0
+    31           2  TABULATE        TCANTIDADBAR                     282              0      0
+    32           3  TERMINATE                                        282              0      0
     35           4  GENERATE        ,,7200,1                           1              0      0
     36           5  SAVEVALUE       CANTCAJAS,3                        1              0      0
     37           6  ADVANCE         3600                               1              0      0
@@ -69,7 +69,7 @@ Bloques ejecutables
     62          29  RELEASE         ESTACIONSERVICIO                  60              0      0
     63          30  ADVANCE         600,120                           60              0      0
     64          31  TRANSFER        ,SUBIRBUS                         60              0      0
-    65   IRENTRADA  ASSIGN          TIPO,FN$TIPOPAS                 1283              0      0
+    65   IRENTRADA  ASSIGN          TIPOPAS,FN$TIPOPAS              1283              0      0
     66          33  ADVANCE         300,120                         1283              0      0
     67          34  MARK            7                               1283              0      0
     68          35  GATHER          P$CANTPAS                       1283              0      0
@@ -81,23 +81,23 @@ Bloques ejecutables
     74          41  ADVANCE         FN$TIEMPOMUS                    1283              0      0
     75          42  TABULATE        TTIEMPOMUSEO                    1283              0      0
     76          43  TRANSFER        FN$PROBBAR,NOBAR,BAR            1283              0      0
-    77         BAR  ENTER           BAR                              620              0      0
-    78          45  ADVANCE         FN$TIEMPOBAR                     620              0      0
-    79          46  TRANSFER        .3,,AZAR                         620              0      0
-    80          47  SELECT      NU  1,1,X$CANTCAJAS,,,SELECTMIN         414              0      0
-    81          48  TRANSFER        ,PAGAR                           391              0      0
-    82   SELECTMIN  SELECT      MIN 1,1,X$CANTCAJAS,,Q                23              0      0
-    83          50  TRANSFER        ,PAGAR                            23              0      0
-    84        AZAR  ASSIGN          1,V$NUMEROCAJA                   206              0      0
-    85       PAGAR  QUEUE           *1                               620              0      0
-    86          53  SEIZE           *1                               620              0      0
-    87          54  DEPART          *1                               620              0      0
-    88          55  ADVANCE         60,30                            620              0      0
-    89          56  RELEASE         *1                               620              0      0
-    90          57  LEAVE           BAR                              620              0      0
-    91          58  ADVANCE         180,120                          620              0      0
-    92          59  TRANSFER        ,SALIDA                          620              0      0
-    93       NOBAR  ADVANCE         1800,900                         663              0      0
+    77         BAR  ENTER           BAR                              596              0      0
+    78          45  ADVANCE         FN$TIEMPOBAR                     596              0      0
+    79          46  TRANSFER        .3,,AZAR                         596              0      0
+    80          47  SELECT      NU  1,1,X$CANTCAJAS,,,SELECTMIN         429              0      0
+    81          48  TRANSFER        ,PAGAR                           421              0      0
+    82   SELECTMIN  SELECT      MIN 1,1,X$CANTCAJAS,,Q                 8              0      0
+    83          50  TRANSFER        ,PAGAR                             8              0      0
+    84        AZAR  ASSIGN          1,V$NUMEROCAJA                   167              0      0
+    85       PAGAR  QUEUE           *1                               596              0      0
+    86          53  SEIZE           *1                               596              0      0
+    87          54  DEPART          *1                               596              0      0
+    88          55  ADVANCE         60,30                            596              0      0
+    89          56  RELEASE         *1                               596              0      0
+    90          57  LEAVE           BAR                              596              0      0
+    91          58  ADVANCE         180,120                          596              0      0
+    92          59  TRANSFER        ,SALIDA                          596              0      0
+    93       NOBAR  ADVANCE         1800,900                         687              0      0
     94      SALIDA  ASSEMBLE        P$CANTPAS                       1283              0      0
     95          62  ADVANCE         90,30                             60              0      0
     96    SUBIRBUS  ASSEMBLE        2                                120              0      0
@@ -108,132 +108,143 @@ Bloques ejecutables
 Facilities
 
  FACILITY          ENTRIES    UTIL.  AVE_TIME  AVAILABLE   OWNER   PEND   INTER   RETRY   DELAY
-              1        223    0,378    57,623          1       0      0       0       0       0
-              2        150    0,267    60,427          1       0      0       0       0       0
-              3        109    0,188    58,569          1       0      0       0       0       0
-              4         75    0,129    58,440          1       0      0       0       0       0
-              5         63    0,116    62,603          1       0      0       0       0       0
-ESTACIONSERVICIO         60    0,324   183,250          1       0      0       0       0       0
-    PUERTAMUSEO       1283    0,150     3,984          1       0      0       0       0       0
+              1        241    0,396    61,423          1       0      0       0       0       0
+              2        161    0,248    57,590          1       0      0       0       0       0
+              3         94    0,151    59,926          1       0      0       0       0       0
+              4         56    0,090    59,946          1       0      0       0       0       0
+              5         44    0,068    57,341          1       0      0       0       0       0
+ESTACIONSERVICIO         60    0,301   187,533          1       0      0       0       0       0
+    PUERTAMUSEO       1283    0,137     3,982          1       0      0       0       0       0
 
 Queues
 
  QUEUE             MAX      CONT.  ENTRIES ENTRIES(0)  AVE.CONT.   AVE.TIME    AVE.(-0)   RETRY
-              1      2         0       223      182       0,039       5,888      32,024       0
-              2      2         0       150      123       0,031       7,053      39,185       0
-              3      1         0       109       96       0,011       3,275      27,462       0
-              4      1         0        75       64       0,011       4,840      33,000       0
-              5      1         0        63       50       0,010       5,460      26,462       0
+              1      1         0       241      215       0,018       2,830      26,231       0
+              2      1         0       161      148       0,008       1,870      23,154       0
+              3      1         0        94       81       0,012       4,713      34,077       0
+              4      1         0        56       53       0,001       0,786      14,667       0
+              5      1         0        44       38       0,003       2,659      19,500       0
 ESTACIONAMIENTO      1         0        60       60       0,000       0,000       0,000       0
-ESTACIONSERVICIO      1         0        60       44       0,030      16,783      62,938       0
-    PUERTAMUSEO     44         0      1283       51       2,217      58,691      61,121       0
+ESTACIONSERVICIO      1         0        60       47       0,037      22,800     105,231       0
+    PUERTAMUSEO     40         0      1283       53       1,944      56,601      59,040       0
 
 Storages
 
  STORAGE           CAP.   REMAIN.   MIN.   MAX.  ENTRIES  AVL.   AVE.C.    UTIL.  RETRY   DELAY
-            BAR   30000    30000       0     49      620     1   16,913    0,001      0       0
-ESTACIONAMIENTO       5        5       0      3       95     1    0,486    0,097      0       0
+            BAR   30000    30000       0     45      596     1   20,729    0,001      0       0
+ESTACIONAMIENTO       5        5       0      3       95     1    0,434    0,087      0       0
 
 Tables
 
 TCANTIDADBAR        TABLE            S$BAR,0,1,100
 
-               MEDIA                         :         18,886
-               DESVIACION ESTANDAR           :         13,549
+               MEDIA                         :         22,720
+               DESVIACION ESTANDAR           :         14,554
                CANTIDAD EN RETRY             :              0
 
           INTERVALO       FRECUENCIA           %     %ACUMULADO    %REMANENTE
-         0  -         0           25       9,843          9,843        90,157
-         1  -         1            3       1,181         11,024        88,976
-         2  -         2            6       2,362         13,386        86,614
-         3  -         3            8       3,150         16,535        83,465
-         4  -         4           11       4,331         20,866        79,134
-         5  -         5           15       5,906         26,772        73,228
-         6  -         6            6       2,362         29,134        70,866
-         7  -         7            7       2,756         31,890        68,110
-         8  -         8            2       0,787         32,677        67,323
-         9  -         9            3       1,181         33,858        66,142
-        10  -        10            1       0,394         34,252        65,748
-        11  -        11            5       1,969         36,220        63,780
-        12  -        12            4       1,575         37,795        62,205
-        13  -        13            8       3,150         40,945        59,055
-        14  -        14            8       3,150         44,094        55,906
-        15  -        15            4       1,575         45,669        54,331
-        16  -        16            4       1,575         47,244        52,756
-        17  -        17            2       0,787         48,031        51,969
-        18  -        18            4       1,575         49,606        50,394
-        19  -        19            3       1,181         50,787        49,213
-        20  -        20            3       1,181         51,969        48,031
-        21  -        21            1       0,394         52,362        47,638
-        22  -        22            3       1,181         53,543        46,457
-        23  -        23            5       1,969         55,512        44,488
-        24  -        24            7       2,756         58,268        41,732
-        25  -        25            6       2,362         60,630        39,370
-        26  -        26            9       3,543         64,173        35,827
-        27  -        27            6       2,362         66,535        33,465
-        28  -        28            6       2,362         68,898        31,102
-        29  -        29            9       3,543         72,441        27,559
-        30  -        30           11       4,331         76,772        23,228
-        31  -        31            8       3,150         79,921        20,079
-        32  -        32            6       2,362         82,283        17,717
-        33  -        33            5       1,969         84,252        15,748
-        34  -        34            4       1,575         85,827        14,173
-        35  -        35            5       1,969         87,795        12,205
-        36  -        36            3       1,181         88,976        11,024
-        37  -        37            5       1,969         90,945         9,055
-        38  -        38            3       1,181         92,126         7,874
-        39  -        39            3       1,181         93,307         6,693
-        40  -        40            4       1,575         94,882         5,118
-        41  -        41            5       1,969         96,850         3,150
-        42  -        42            1       0,394         97,244         2,756
-        43  -        43            2       0,787         98,031         1,969
-        44  -        44            1       0,394         98,425         1,575
-        45  -        45            1       0,394         98,819         1,181
-        46  -        46            3       1,181        100,000         0,000
-            Las frecuencias restantes (53) son todas cero.
+         0  -         0           29      10,284         10,284        89,716
+         1  -         1            2       0,709         10,993        89,007
+         2  -         2            5       1,773         12,766        87,234
+         3  -         3            6       2,128         14,894        85,106
+         4  -         4            6       2,128         17,021        82,979
+         5  -         5            9       3,191         20,213        79,787
+         6  -         6           12       4,255         24,468        75,532
+         7  -         7            6       2,128         26,596        73,404
+         8  -         8           14       4,965         31,560        68,440
+         9  -         9            4       1,418         32,979        67,021
+        10  -        10            0       0,000         32,979        67,021
+        11  -        11            0       0,000         32,979        67,021
+        12  -        12            3       1,064         34,043        65,957
+        13  -        13            2       0,709         34,752        65,248
+        14  -        14            0       0,000         34,752        65,248
+        15  -        15            1       0,355         35,106        64,894
+        16  -        16            0       0,000         35,106        64,894
+        17  -        17            2       0,709         35,816        64,184
+        18  -        18            0       0,000         35,816        64,184
+        19  -        19            0       0,000         35,816        64,184
+        20  -        20            1       0,355         36,170        63,830
+        21  -        21            2       0,709         36,879        63,121
+        22  -        22            4       1,418         38,298        61,702
+        23  -        23            2       0,709         39,007        60,993
+        24  -        24            7       2,482         41,489        58,511
+        25  -        25            6       2,128         43,617        56,383
+        26  -        26           10       3,546         47,163        52,837
+        27  -        27            4       1,418         48,582        51,418
+        28  -        28           17       6,028         54,610        45,390
+        29  -        29            7       2,482         57,092        42,908
+        30  -        30           13       4,610         61,702        38,298
+        31  -        31            8       2,837         64,539        35,461
+        32  -        32           13       4,610         69,149        30,851
+        33  -        33            4       1,418         70,567        29,433
+        34  -        34            7       2,482         73,050        26,950
+        35  -        35            9       3,191         76,241        23,759
+        36  -        36           11       3,901         80,142        19,858
+        37  -        37           11       3,901         84,043        15,957
+        38  -        38            6       2,128         86,170        13,830
+        39  -        39            9       3,191         89,362        10,638
+        40  -        40            4       1,418         90,780         9,220
+        41  -        41           11       3,901         94,681         5,319
+        42  -        42            7       2,482         97,163         2,837
+        43  -        43            4       1,418         98,582         1,418
+        44  -        44            4       1,418        100,000         0,000
+            Las frecuencias restantes (55) son todas cero.
 
-        CANTIDAD DE VALORES TABULADOS :           254
-        VALOR MAXIMO TABULADO         :        46,000
+        CANTIDAD DE VALORES TABULADOS :           282
+        VALOR MAXIMO TABULADO         :        44,000
 
-TTIEMPOBUSSISTEMA   TABLE            M1,3600,1800,19
+TTIEMPOBUSSISTEMA   TABLE            M1,3600,600,19
 
-               MEDIA                         :       7060,717
-               DESVIACION ESTANDAR           :        465,647
+               MEDIA                         :       8689,717
+               DESVIACION ESTANDAR           :        678,933
                CANTIDAD EN RETRY             :              0
 
           INTERVALO       FRECUENCIA           %     %ACUMULADO    %REMANENTE
          0  -      3600            0       0,000          0,000       100,000
-      3601  -      5400            0       0,000          0,000       100,000
-      5401  -      7200           32      53,333         53,333        46,667
-      7201  -      9000           28      46,667        100,000         0,000
-            Las frecuencias restantes (15) son todas cero.
+      3601  -      4200            0       0,000          0,000       100,000
+      4201  -      4800            0       0,000          0,000       100,000
+      4801  -      5400            0       0,000          0,000       100,000
+      5401  -      6000            0       0,000          0,000       100,000
+      6001  -      6600            2       3,333          3,333        96,667
+      6601  -      7200            0       0,000          3,333        96,667
+      7201  -      7800            1       1,667          5,000        95,000
+      7801  -      8400           11      18,333         23,333        76,667
+      8401  -      9000           27      45,000         68,333        31,667
+      9001  -      9600           19      31,667        100,000         0,000
+            Las frecuencias restantes (8) son todas cero.
 
         CANTIDAD DE VALORES TABULADOS :            60
-        VALOR MAXIMO TABULADO         :      7681,000
+        VALOR MAXIMO TABULADO         :      9597,000
 
 TTIEMPOMUSEO        TABLE            MP7,600,300,23
 
-               MEDIA                         :       3075,925
-               DESVIACION ESTANDAR           :        298,762
+               MEDIA                         :       2812,221
+               DESVIACION ESTANDAR           :       1572,184
                CANTIDAD EN RETRY             :              0
 
           INTERVALO       FRECUENCIA           %     %ACUMULADO    %REMANENTE
          0  -       600            0       0,000          0,000       100,000
-       601  -       900            0       0,000          0,000       100,000
-       901  -      1200            0       0,000          0,000       100,000
-      1201  -      1500            0       0,000          0,000       100,000
-      1501  -      1800            0       0,000          0,000       100,000
-      1801  -      2100            0       0,000          0,000       100,000
-      2101  -      2400            0       0,000          0,000       100,000
-      2401  -      2700          185      14,419         14,419        85,581
-      2701  -      3000          341      26,578         40,998        59,002
-      3001  -      3300          394      30,709         71,707        28,293
-      3301  -      3600          353      27,514         99,221         0,779
-      3601  -      3900           10       0,779        100,000         0,000
-            Las frecuencias restantes (11) son todas cero.
+       601  -       900           62       4,832          4,832        95,168
+       901  -      1200          150      11,691         16,524        83,476
+      1201  -      1500          179      13,952         30,475        69,525
+      1501  -      1800          155      12,081         42,557        57,443
+      1801  -      2100           58       4,521         47,077        52,923
+      2101  -      2400           30       2,338         49,415        50,585
+      2401  -      2700           21       1,637         51,052        48,948
+      2701  -      3000           87       6,781         57,833        42,167
+      3001  -      3300           74       5,768         63,601        36,399
+      3301  -      3600           60       4,677         68,277        31,723
+      3601  -      3900            2       0,156         68,433        31,567
+      3901  -      4200            0       0,000         68,433        31,567
+      4201  -      4500           45       3,507         71,941        28,059
+      4501  -      4800          118       9,197         81,138        18,862
+      4801  -      5100          134      10,444         91,582         8,418
+      5101  -      5400          101       7,872         99,454         0,546
+      5401  -      5700            7       0,546        100,000         0,000
+            Las frecuencias restantes (5) son todas cero.
 
         CANTIDAD DE VALORES TABULADOS :          1283
-        VALOR MAXIMO TABULADO         :      3642,000
+        VALOR MAXIMO TABULADO         :      5415,000
 
 
 QTables
@@ -253,19 +264,20 @@ QTESTACIONAMIENTO   TABLE            ESTACIONAMIENTO,0,30,20
 
 QTESTACIONSERVICIO  TABLE            ESTACIONSERVICIO,0,60,20
 
-               MEDIA                         :         16,783
-               DESVIACION ESTANDAR           :         39,835
+               MEDIA                         :         22,800
+               DESVIACION ESTANDAR           :         49,415
                CANTIDAD EN RETRY             :              0
 
           INTERVALO       FRECUENCIA           %     %ACUMULADO    %REMANENTE
-         0  -         0           44      73,333         73,333        26,667
-         1  -        60            9      15,000         88,333        11,667
-        61  -       120            4       6,667         95,000         5,000
-       121  -       180            3       5,000        100,000         0,000
-            Las frecuencias restantes (16) son todas cero.
+         0  -         0           47      78,333         78,333        21,667
+         1  -        60            1       1,667         80,000        20,000
+        61  -       120            7      11,667         91,667         8,333
+       121  -       180            4       6,667         98,333         1,667
+       181  -       240            1       1,667        100,000         0,000
+            Las frecuencias restantes (15) son todas cero.
 
         CANTIDAD DE VALORES TABULADOS :            60
-        VALOR MAXIMO TABULADO         :       177,000
+        VALOR MAXIMO TABULADO         :       203,000
 
 
 Savevalues
@@ -277,4 +289,4 @@ Savevalues
 Cadena de eventos futuros (FEC)
 
  FEC_XACT_NUMBER    PRI         BDT       CURRENT       NEXT        PARAMETER        VALUE
-             202      0       34080             0          1
+              27      0       37440             0          1
